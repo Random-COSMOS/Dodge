@@ -1,0 +1,24 @@
+{
+  "name": "dodge",
+  "version": "1.0.0",
+  "description": "A game based on the framework \"Phaser\"",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nedb": "^1.8.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Random-COSMOS/Dodge.git"
+  },
+  "author": "RANDOM cosmos",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Random-COSMOS/Dodge/issues"
+  },
+  "homepage": "https://github.com/Random-COSMOS/Dodge#readme"
+}

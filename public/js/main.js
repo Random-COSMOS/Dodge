@@ -1,4 +1,4 @@
-    const CONFIG = {
+const CONFIG = {
     type: Phaser.AUTO,
     width: 800,
     height: 600,
@@ -19,9 +19,8 @@
 };
 
 let game = new Phaser.Game(CONFIG);
-let platforms, player, stars, scoreText, score = 0,
-    bombs;
-
+let platforms, player, stars, scoreText, bombs, gameOver = false,
+    score = 0;
 
 function preload() {
     this.load.image('bs1', 'images/BS 1.svg');
@@ -35,7 +34,6 @@ function preload() {
             frameHeight: 48
         }
     );
-    console.log(this);
 }
 
 function collectStar(player, star) {
@@ -61,7 +59,35 @@ function hitBomb(player, bomb) {
     this.physics.pause();
     player.setTint(0xff0000);
     player.anims.play('turn');
-    gameOver = true;
+
+    document.getElementById("gameOver").style.display = "block";
+    window.addEventListener('keydown', (e) => {
+        if (e.key == "r") {
+            document.getElementById("gameOver").style.display = "none";
+            this.scene.restart()
+        }
+    })
+
+    fetch('/checkScores', {
+        method: "POST",
+        headers: {
+            'Content-type': "application/json"
+        },
+        body: JSON.stringify({
+            score: score
+        })
+    })
+
+    fetch("/scores", {
+        method: 'POST',
+        headers: {
+            'Content-type': 'application/json'
+        },
+        body: JSON.stringify({
+            Name: 'cosmos',
+            score: score
+        })
+    })
 }
 
 function create() {
