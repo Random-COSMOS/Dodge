@@ -77,17 +77,21 @@ function hitBomb(player, bomb) {
             score: score
         })
     })
+    .then(r => console.log(r.JSON))
+    .then(j => console.log(j))
 
-    fetch("/scores", {
+
+    fetch("/highScore", {
         method: 'POST',
         headers: {
             'Content-type': 'application/json'
         },
         body: JSON.stringify({
-            Name: 'cosmos',
+            name: 'cosmos',
             score: score
         })
     })
+    score = 0
 }
 
 function create() {
@@ -171,21 +175,18 @@ function create() {
 function update() {
     let cursors = this.input.keyboard.createCursorKeys()
 
-    if (cursors.left.isDown) {
+    if (cursors.left.isDown || this.input.keyboard.addKey('A').isDown) {
         player.setVelocityX(-160);
-
         player.anims.play('left', true);
-    } else if (cursors.right.isDown) {
+    } else if (cursors.right.isDown || this.input.keyboard.addKey('D').isDown) {
         player.setVelocityX(160);
-
         player.anims.play('right', true);
     } else {
         player.setVelocityX(0);
-
         player.anims.play('turn');
     }
 
-    if (cursors.up.isDown && player.body.touching.down) {
+    if ((cursors.up.isDown || this.input.keyboard.addKey('W').isDown) && player.body.touching.down) {
         player.setVelocityY(-330);
     }
 }
