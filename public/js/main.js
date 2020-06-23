@@ -36,6 +36,19 @@ function preload() {
     );
 }
 
+window.addEventListener('keydown', e => {
+    if (e.key == "b") {
+        let x = player.x < 400 ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 800);
+        let bomb = bombs.create(x, 16, 'bomb');
+        bomb.setBounce(1);
+        bomb.setCollideWorldBounds(true);
+        bomb.setVelocity(Phaser.Math.Between(-200, 200), 20);
+    }
+})
+
+const hide = id => document.getElementById(id).style.display = "none"
+const show = id => document.getElementById(id).style.display = "block"
+
 function collectStar(player, star) {
     star.disableBody(true, true);
 
@@ -55,20 +68,20 @@ function collectStar(player, star) {
     }
 }
 
-function hitBomb(player, bomb) {
+async function hitBomb(player, bomb) {
     this.physics.pause();
     player.setTint(0xff0000);
     player.anims.play('turn');
 
-    document.getElementById("gameOver").style.display = "block";
+    show("gameOver")
     window.addEventListener('keydown', (e) => {
         if (e.key == "r") {
-            document.getElementById("gameOver").style.display = "none";
+            hide("gameOver")
             this.scene.restart()
         }
     })
 
-    fetch('/checkScores', {
+    const optionsForCheckingScores = {
         method: "POST",
         headers: {
             'Content-type': "application/json"
@@ -76,21 +89,24 @@ function hitBomb(player, bomb) {
         body: JSON.stringify({
             score: score
         })
-    })
-    .then(r => console.log(r.JSON))
-    .then(j => console.log(j))
+    }
+
+    const res = await fetch('/checkScores', optionsForCheckingScores)
+    const data = await res.json()
+    console.log(data)
 
 
-    fetch("/highScore", {
-        method: 'POST',
-        headers: {
-            'Content-type': 'application/json'
-        },
-        body: JSON.stringify({
-            name: 'cosmos',
-            score: score
-        })
-    })
+
+    // fetch("/highScore", {
+    //     method: 'POST',
+    //     headers: {
+    //         'Content-type': 'application/json'
+    //     },
+    //     body: JSON.stringify({
+    //         name: 'cosmos',
+    //         score: score
+    //     })
+    // })
     score = 0
 }
 

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,15 +8,26 @@
 
     <title>Dodge</title>
 </head>
+
 <body>
-    
+
     <div class="gameOver" id="gameOver">
         <h1>GAME OVER</h1>
         <p>Press "R" to Restart</p>
         <p>Press "M" to open Menu</p>
     </div>
 
+    <div class="highScore" id="highScore">
+        <h1>Congrats You Made a High Score</h1>
+        <form action="/test" method="post">
+            <input type="text" name="name" id="name">
+            <p>Score: <span class="score" id="score">N/A</span></p>
+            <input type="submit" value="SUBMIT">
+        </form>
+    </div>
+
     <script src="./js/phaser.min.js"></script>
     <script src="./js/main.js"></script>
 </body>
+
 </html>
