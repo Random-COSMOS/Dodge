@@ -10,7 +10,7 @@ app.use(express.json({
 }));
 
 const db = new dataStore({
-    filename: 'High Scores.db',
+    filename: 'High-Scores.db',
     autoload: true
 });
 
@@ -23,7 +23,7 @@ app.post("/checkScores", (req, res) => {
             $gt: score
         }
     }, (err, doc) => {
-        doc.length < 10 ? highScore = true : highScore = false
+        doc.length < 5 ? highScore = true : highScore = false
         res.json({
             status: "ok",
             score: score,
@@ -46,7 +46,7 @@ app.post("/highScore", (req, res) => {
         console.log(doc)
         console.log(doc.length)
 
-        if (doc.length > 10) {
+        if (doc.length > 5) {
             id = doc[0]._id
             db.remove({
                 _id: id
@@ -54,5 +54,11 @@ app.post("/highScore", (req, res) => {
                 err ? console.log(err) : null
             })
         }
+    })
+})
+
+app.get("/highScoreList", (req, res) => {
+    db.find({}).sort({score: -1}).exec((err, doc) => {
+        res.json(doc)
     })
 })

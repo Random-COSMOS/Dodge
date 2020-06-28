@@ -11,6 +11,13 @@
 
 <body>
 
+    <!-- Scene1 -->
+    <div class="menu" id="menu">
+        <h1>DODGE</h1>
+    </div>
+
+
+    <!-- Scene2 -->
     <div class="gameOver" id="gameOver">
         <h1>GAME OVER</h1>
         <p>Press "R" to Restart</p>
@@ -19,16 +26,15 @@
 
     <div class="highScore" id="highScore">
         <h1>Congrats You Made a High Score</h1>
-        <form>
-            <label for="name">Name</label><br>
-            <input type="text" name="name" id="name">
-            <p>Score: <span class="score" id="score">N/A</span></p>
-            <input type="button" value="SUBMIT" onclick="sendScore()">
-        </form>
+        <label for="name">Name</label><br>
+        <input type="text" name="name" id="name">
+        <p>Score: <span class="score" id="score">N/A</span></p>
+        <input type="button" value="SUBMIT" onclick="sendScore()">
     </div>
 
     <script src="./js/phaser.min.js"></script>
-    <script src="./js/eventFunc.js"></script>
+    <script src="./js/scenes/scene1.js"></script>
+    <script src="./js/scenes/scene2.js"></script>
     <script src="./js/main.js"></script>
 </body>
 
