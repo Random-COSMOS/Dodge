@@ -62,8 +62,7 @@ class Scene2 extends Phaser.Scene {
         this.load.image('ground', 'images/Scene2/platform.png');
         this.load.image('star', 'images/Scene2/star.png');
         this.load.image('bomb', 'images/Scene2/bomb.png');
-        this.load.spritesheet('dude',   
-            'images/dude.png', {
+        this.load.spritesheet('dude', 'images/Scene2/dude.png', {
                 frameWidth: 32,
                 frameHeight: 48
             }

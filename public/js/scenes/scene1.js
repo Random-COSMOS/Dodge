@@ -38,6 +38,9 @@ class Scene1 extends Phaser.Scene {
         this.layer8.setOrigin(0,0)
         this.layer9.setOrigin(0,0)
         this.layer10.setOrigin(0,0)
+
+        // document.getElementById('menu').addEventListener('click', () => this.scene.start('main'))
+        this.scene.start('main')
     }
 
     update() {

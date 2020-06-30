@@ -14,6 +14,7 @@ const CONFIG = {
     scene: [Scene1, Scene2]
 };
 
+// Scene2
 let game = new Phaser.Game(CONFIG);
 
 const hide = id => document.getElementById(id).style.display = "none"
