@@ -4,16 +4,16 @@ class Scene1 extends Phaser.Scene {
     }
 
     preload() {
-        this.load.image("layer1", "images/Scene1/01_Sky.png")
-        this.load.image("layer2", "images/Scene1/02_Forest.png")
-        this.load.image("layer3", "images/Scene1/03_Forest.png")
-        this.load.image("layer4", "images/Scene1/04_Forest.png")
-        this.load.image("layer5", "images/Scene1/05_Forest.png")
-        this.load.image("layer6", "images/Scene1/06_Particles.png")
-        this.load.image("layer7", "images/Scene1/07_Forest.png")
-        this.load.image("layer8", "images/Scene1/08_Particles.png")
-        this.load.image("layer9", "images/Scene1/09_Bushes.png")
-        this.load.image("layer10", "images/Scene1/10_Mist.png")
+        this.load.image("layer1", "images/Scene1/bg/01_Sky.png")
+        this.load.image("layer2", "images/Scene1/bg/02_Forest.png")
+        this.load.image("layer3", "images/Scene1/bg/03_Forest.png")
+        this.load.image("layer4", "images/Scene1/bg/04_Forest.png")
+        this.load.image("layer5", "images/Scene1/bg/05_Forest.png")
+        this.load.image("layer6", "images/Scene1/bg/06_Particles.png")
+        this.load.image("layer7", "images/Scene1/bg/07_Forest.png")
+        this.load.image("layer8", "images/Scene1/bg/08_Particles.png")
+        this.load.image("layer9", "images/Scene1/bg/09_Bushes.png")
+        this.load.image("layer10", "images/Scene1/bg/10_Mist.png")
     }
 
     create() {
@@ -39,8 +39,7 @@ class Scene1 extends Phaser.Scene {
         this.layer9.setOrigin(0,0)
         this.layer10.setOrigin(0,0)
 
-        // document.getElementById('menu').addEventListener('click', () => this.scene.start('main'))
-        this.scene.start('main')
+        // this.scene.start('main')
     }
 
     update() {
